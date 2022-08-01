@@ -21,6 +21,6 @@ abstract class CustomColors {
 
   static Color customContrastColor = Colors.red.shade700;
 
-  static MaterialColor customSwatchColor = MaterialColor( 0xFF8B634A, _swatchOpacity);
+  static MaterialColor customSwatchColor = MaterialColor(0xFF8B634A, _swatchOpacity);
 
 }
