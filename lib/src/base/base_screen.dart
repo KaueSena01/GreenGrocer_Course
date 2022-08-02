@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
+import 'package:greengrocer_course/src/home/home_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({ Key? key }) : super(key: key);
@@ -20,8 +21,8 @@ class _BaseScreenState extends State<BaseScreen> {
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           children: [
-            Container(color: Colors.red),
-            Container(color: Colors.yellow),
+            const HomeTab(),
+            Container(color: Colors.white),
             Container(color: Colors.blue),
             Container(color: Colors.purple),
           ],
