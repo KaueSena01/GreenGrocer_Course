@@ -1,3 +1,4 @@
+import 'package:greengrocer_course/src/models/cart_item_model.dart';
 import 'package:greengrocer_course/src/models/item_model.dart';
 
 ItemModel apple = ItemModel(
@@ -61,6 +62,25 @@ List<ItemModel> items = [
   kiwi,
   mango,
   papaya
+];
+
+List<CartItemModel> cartItem = [
+  CartItemModel(
+    item: apple, 
+    quantity: 1
+  ),
+  CartItemModel(
+    item: grape, 
+    quantity: 3
+  ),
+  CartItemModel(
+    item: mango, 
+    quantity: 4
+  ),
+  CartItemModel(
+    item: papaya, 
+    quantity: 5
+  ),
 ];
 
 List<String> categories = [

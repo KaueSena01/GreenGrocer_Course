@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
+import 'package:greengrocer_course/src/pages/cart/cart_tab.dart';
 
 import '../home/home_tab.dart';
 
@@ -22,8 +23,8 @@ class _BaseScreenState extends State<BaseScreen> {
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           children: [
-            HomeTab(),
-            Container(color: Colors.white),
+            const HomeTab(),
+            CartTab(),
             Container(color: Colors.blue),
             Container(color: Colors.purple),
           ],
