@@ -1,5 +1,7 @@
 import 'package:greengrocer_course/src/models/cart_item_model.dart';
 import 'package:greengrocer_course/src/models/item_model.dart';
+import 'package:greengrocer_course/src/models/order_model.dart';
+import 'package:greengrocer_course/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
   imgUrl: 'assets/fruits/apple.png',
@@ -89,4 +91,44 @@ List<String> categories = [
   'Verduras',
   'Temperos',
   'Cereais'
+];
+
+UserModel user = UserModel(
+  name: 'Sena', 
+  email: 'sena@gmail.com', 
+  phone: '239922903', 
+  cpf: '82969232232', 
+  password: '22222222'
+);
+
+List<OrderModel> orders = [
+  OrderModel(
+    id: 'V92dojs3q', 
+    cratedDateTime: DateTime.parse('2022-08-03 10:00:10.458'), 
+    overdueDateTime: DateTime.parse('2022-08-03 11:00:10.458'), 
+    status: 'pending_payment', 
+    copyAndPaste: 'asd6a54dauhew923', 
+    total: 11.0,
+    items: [ 
+      CartItemModel(
+        item: apple,
+        quantity: 2
+      ),
+    ] 
+  ),
+
+  OrderModel(
+    id: 'V92dojs3q', 
+    cratedDateTime: DateTime.parse('2022-08-03 10:00:10.458'), 
+    overdueDateTime: DateTime.parse('2022-08-03 11:00:10.458'), 
+    status: 'pending_payment', 
+    copyAndPaste: 'asd6a54dauhew923', 
+    total: 11.0,
+    items: [ 
+      CartItemModel(
+        item: apple,
+        quantity: 2
+      ),
+    ] 
+  )
 ];
