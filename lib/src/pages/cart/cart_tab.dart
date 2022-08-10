@@ -19,6 +19,7 @@ class _CartTabState extends State<CartTab> {
   void removeItemFromCart(CartItemModel cartItem) {
     setState(() {
       app_data.cartItem.remove(cartItem);
+      utilServices.showToast(message: 'Você removeu a fruta: ${cartItem.item.itemName}');
     });
   }
 
@@ -93,7 +94,9 @@ class _CartTabState extends State<CartTab> {
                             );
                           }
                         );
-                      } 
+                      } else {
+                        utilServices.showToast(message: 'Pedido não confirmado', isError: true);
+                      }
                     }, 
                     child: const Text('Concluir pedido', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
                   ),

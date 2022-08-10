@@ -15,10 +15,11 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Align(
-        alignment: Alignment.center,
+    return Align(
+      alignment: Alignment.center,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        onTap: onPressed,
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 6),
           decoration: BoxDecoration(

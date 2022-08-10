@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       overlays: []
     );
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Greengrocer',
       theme: ThemeData(
         primarySwatch: Colors.green,
         scaffoldBackgroundColor: Colors.white.withAlpha(190),
