@@ -4,6 +4,8 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
+import 'package:greengrocer_course/src/pages/common_widgets/app_name_widget.dart';
+import 'package:greengrocer_course/src/pages/common_widgets/custom_shimmer.dart';
 import 'package:greengrocer_course/src/pages/home/components/item_tile.dart';
 import 'package:greengrocer_course/src/services/utils_services.dart';
 import 'components/category_tile.dart';
@@ -17,6 +19,8 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+
+  final UtilServices utilServices = UtilServices();
   
   String selectedCategory = 'Frutas';
 
@@ -28,7 +32,17 @@ class _HomeTabState extends State<HomeTab> {
     runAddToCartAnimation(gkImage);
   }
 
-  final UtilServices utilServices = UtilServices();
+  bool isLoading = true; 
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 750), () {
+      setState(() {
+        isLoading = !isLoading;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +51,7 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text.rich(
-          TextSpan(
-            style: const TextStyle(
-              fontSize: 30
-            ),
-            children: [
-              TextSpan(text: 'Green', style: TextStyle(
-                color: CustomColors.customPrimaryColor
-              )),
-              TextSpan(text: 'grocer', style: TextStyle(
-                color: CustomColors.customContrastColor
-              )),
-            ]
-          )
-        ),
+        title: const AppNameWidget(),
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 15.0, right: 15.0),
@@ -104,7 +104,7 @@ class _HomeTabState extends State<HomeTab> {
             Container(
               padding: const EdgeInsets.only(left: 25),
               height: 40,
-              child: ListView.separated(
+              child: !isLoading ? ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (_, index) {
                   return CategoryTile(
@@ -119,10 +119,25 @@ class _HomeTabState extends State<HomeTab> {
                 }, 
                 separatorBuilder: (_, index) => const SizedBox(width: 10),
                 itemCount: app_data.categories.length
-              ),
+              ) :
+              ListView(
+                scrollDirection: Axis.horizontal,
+                children: List.generate(
+                  app_data.categories.length, (index) => 
+                  Container(
+                    margin: const EdgeInsets.only(right: 12),
+                    alignment: Alignment.center,
+                    child: CustomShimmer(
+                      height: 20, 
+                      width: 80,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  )
+                )
+              )
             ),
             Expanded(
-              child: GridView.builder(
+              child: !isLoading ? GridView.builder(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                 physics: const BouncingScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -138,7 +153,23 @@ class _HomeTabState extends State<HomeTab> {
                     cartAnimationMethod: itemSelectedCartAnimation
                   );
                 },
-              ),
+              ) : 
+              GridView.count(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                physics: const BouncingScrollPhysics(),
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 9 / 11.5,
+                  children: List.generate(
+                    app_data.items.length, (index) => 
+                    CustomShimmer(
+                      height: double.infinity, 
+                      width: double.infinity,
+                      borderRadius: BorderRadius.circular(20),
+                    )
+                )
+              )
             )
           ],
         ),
