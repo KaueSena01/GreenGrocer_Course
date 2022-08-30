@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-
-import '../common_widgets/custom_text_field.dart';
+import 'package:greengrocer_course/src/pages/common_widgets/custom_text_field.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart'; 
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({ Key? key }) : super(key: key);

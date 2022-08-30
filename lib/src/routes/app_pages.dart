@@ -1,10 +1,9 @@
-
-
 import 'package:get/get.dart';
-import 'package:greengrocer_course/src/pages/auth/sign_in_screen.dart';
-import 'package:greengrocer_course/src/pages/auth/sign_up_screen.dart';
 import 'package:greengrocer_course/src/pages/base/base_screen.dart';
 import 'package:greengrocer_course/src/pages/splash/splash_screen.dart';
+
+import '../pages/auth/view/sign_in_screen.dart';
+import '../pages/auth/view/sign_up_screen.dart';
 
 abstract class AppPages{
 

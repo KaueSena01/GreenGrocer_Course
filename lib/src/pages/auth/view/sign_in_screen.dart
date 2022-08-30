@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
 import 'package:greengrocer_course/src/pages/auth/controller/auth_controller.dart';
 import 'package:greengrocer_course/src/pages/common_widgets/app_name_widget.dart';
+import 'package:greengrocer_course/src/pages/common_widgets/custom_text_field.dart';
 import 'package:greengrocer_course/src/routes/app_pages.dart';
-
-import '../base/base_screen.dart';
-import '../common_widgets/custom_text_field.dart';
 import 'sign_up_screen.dart';
 
 class SignInScreen extends StatelessWidget {
