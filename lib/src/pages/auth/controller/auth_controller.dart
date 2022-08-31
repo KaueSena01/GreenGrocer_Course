@@ -1,5 +1,5 @@
-import 'package:get/get.dart';
-import 'package:greengrocer_course/src/config/app_data.dart';
+import 'package:get/get.dart'; 
+import 'package:greengrocer_course/src/constants/storage_keys.dart';
 import 'package:greengrocer_course/src/models/user_model.dart';
 import 'package:greengrocer_course/src/pages/auth/repository/auth_repository.dart';
 import 'package:greengrocer_course/src/pages/auth/result/auth_result.dart';
@@ -15,8 +15,47 @@ class AuthController extends GetxController {
 
   UserModel user = UserModel();
 
+  @override
+  void onInit() {
+    super.onInit();
+
+    validateToken();
+  }
+
   Future<void> validateToken() async {
-    
+    String? token = await utilServices.getLocalData(key: StorageKeys.token);
+
+    if(token == null) {
+      Get.offAllNamed(PagesRoutes.signInRoute);
+      return;
+    }
+
+    AuthResult result = await authRepository.validateToken(token);
+
+    result.when(
+      success: (user) {
+        this.user = user;
+        saveTokenAndProceedToBase();
+      }, 
+      error: (message) {
+        signOut();
+      }
+    );
+  }
+
+  Future<void> signOut() async {
+    // Atribuição nula
+    user = UserModel();
+
+    await utilServices.removeLocalData(key: StorageKeys.token);
+
+    Get.offAllNamed(PagesRoutes.signInRoute);
+  }
+
+  void saveTokenAndProceedToBase() {
+    utilServices.saveLocalData(key: StorageKeys.token, data: user.token!);
+
+    Get.offAllNamed(PagesRoutes.baseRoute);
   }
 
   Future<void> signIn({required String email, required String password}) async {
@@ -31,7 +70,7 @@ class AuthController extends GetxController {
       success: (user) {
         this.user = user;
 
-        Get.offAllNamed(PagesRoutes.baseRoute);
+        saveTokenAndProceedToBase();
       }, 
       error: (message) {
         utilServices.showToast(
