@@ -79,7 +79,7 @@ class _HomeTabState extends State<HomeTab> {
                   filled: true,
                   fillColor: Colors.white,
                   isDense: true,
-                  hintText: 'Pesquise aqui',
+                  hintText: 'Pesquise aqui...',
                   hintStyle: TextStyle(
                     color: Colors.grey.shade400,
                     fontSize: 14
@@ -135,7 +135,7 @@ class _HomeTabState extends State<HomeTab> {
             GetBuilder<HomeController>(
               builder: (controller) {
                 return Expanded(
-                  child: !controller.isLoading ? GridView.builder(
+                  child: !controller.isProductLoading ? GridView.builder(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                     physics: const BouncingScrollPhysics(),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -144,10 +144,15 @@ class _HomeTabState extends State<HomeTab> {
                       crossAxisSpacing: 10,
                       childAspectRatio: 9 / 11.5
                     ),
-                    itemCount: app_data.items.length,
+                    itemCount: controller.allProducts.length,
                     itemBuilder: (_, index) {
+                      if(index + 1 == controller.allProducts.length) {
+                        if(!controller.isLastPage) {
+                          controller.loadMoreProducts();
+                        }
+                      }
                       return ItemTile(
-                        item: app_data.items[index],
+                        item: controller.allProducts[index],
                         cartAnimationMethod: itemSelectedCartAnimation
                       );
                     },
