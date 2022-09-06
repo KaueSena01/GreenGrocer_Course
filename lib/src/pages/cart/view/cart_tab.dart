@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
 import 'package:greengrocer_course/src/models/cart_item_model.dart';
-import 'package:greengrocer_course/src/pages/cart/components/cart_tile.dart';
+import 'package:greengrocer_course/src/pages/cart/controller/cart_controller.dart'; 
 import 'package:greengrocer_course/src/pages/common_widgets/payment_dialog.dart';
 import 'package:greengrocer_course/src/services/utils_services.dart';
 import 'package:greengrocer_course/src/config/app_data.dart' as app_data;
+
+import 'components/cart_tile.dart';
 
 class CartTab extends StatefulWidget {
   const CartTab({ Key? key }) : super(key: key);
@@ -15,13 +18,6 @@ class CartTab extends StatefulWidget {
 
 class _CartTabState extends State<CartTab> {
   final UtilServices utilServices = UtilServices();
-
-  void removeItemFromCart(CartItemModel cartItem) {
-    setState(() {
-      app_data.cartItem.remove(cartItem);
-      utilServices.showToast(message: 'Você removeu a fruta: ${cartItem.item.itemName}');
-    });
-  }
 
   double cartTotalPrice() {
     double total = 0;
@@ -42,14 +38,17 @@ class _CartTabState extends State<CartTab> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-              itemCount: app_data.cartItem.length,
-              itemBuilder: (_, index) {
-                return CartTile(
-                  cartItem: app_data.cartItem[index],
-                  remove: removeItemFromCart  
-                );
-              }
+            child: GetBuilder<CartController>( 
+              builder: (controller) {
+                return ListView.builder(
+                  itemCount: controller.cartItems.length,
+                  itemBuilder: (_, index) {
+                    return CartTile(
+                      cartItem: controller.cartItems[index]
+                    );
+                  }
+                ); 
+              },
             )
           ), 
           const SizedBox(height: 20),
@@ -72,7 +71,11 @@ class _CartTabState extends State<CartTab> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text('Total geral', style: TextStyle(fontSize: 15)),
-                Text(utilServices.priceToCurrency(cartTotalPrice()), style: TextStyle(color: CustomColors.customPrimaryColor, fontSize: 23, fontWeight: FontWeight.bold)),
+                GetBuilder<CartController>( 
+                  builder: (controller) {
+                    return Text(utilServices.priceToCurrency(controller.cartTotalPrice()), style: TextStyle(color: CustomColors.customPrimaryColor, fontSize: 23, fontWeight: FontWeight.bold)); 
+                  },
+                ),
                 const SizedBox(height: 10),
                 SizedBox(
                   height: 50,

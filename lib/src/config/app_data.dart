@@ -57,32 +57,13 @@ ItemModel papaya = ItemModel(
       'O melhor mamão da região e que conta com o melhor preço de qualquer quitanda. Este item conta com vitaminas essenciais para o fortalecimento corporal, resultando em uma vida saudável.',
 );
 
-List<ItemModel> items = [
-  apple,
-  grape,
-  guava,
-  kiwi,
-  mango,
-  papaya
-];
+List<ItemModel> items = [apple, grape, guava, kiwi, mango, papaya];
 
 List<CartItemModel> cartItem = [
-  CartItemModel(
-    item: apple, 
-    quantity: 1
-  ),
-  CartItemModel(
-    item: grape, 
-    quantity: 3
-  ),
-  CartItemModel(
-    item: mango, 
-    quantity: 4
-  ),
-  CartItemModel(
-    item: papaya, 
-    quantity: 5
-  ),
+  CartItemModel(item: apple, quantity: 1, id: ''),
+  CartItemModel(item: grape, quantity: 3, id: ''),
+  CartItemModel(item: mango, quantity: 4, id: ''),
+  CartItemModel(item: papaya, quantity: 5, id: ''),
 ];
 
 List<String> categories = [
@@ -94,41 +75,31 @@ List<String> categories = [
 ];
 
 UserModel user = UserModel(
-  name: 'Sena', 
-  email: 'sena@gmail.com', 
-  phone: '239922903', 
-  cpf: '82969232232', 
-  password: '22222222'
-);
+    name: 'Sena',
+    email: 'sena@gmail.com',
+    phone: '239922903',
+    cpf: '82969232232',
+    password: '22222222');
 
 List<OrderModel> orders = [
   OrderModel(
-    id: 'V92dojs3q', 
-    cratedDateTime: DateTime.parse('2022-08-10 10:00:10.458'), 
-    overdueDateTime: DateTime.parse('2022-08-19 11:00:10.458'), 
-    status: 'preparing_purchase', 
-    copyAndPaste: 'asd6a54dauhew923', 
-    total: 11.0,
-    items: [ 
-      CartItemModel(
-        item: apple,
-        quantity: 2
-      ),
-    ] 
-  ),
-
+      id: 'V92dojs3q',
+      cratedDateTime: DateTime.parse('2022-08-10 10:00:10.458'),
+      overdueDateTime: DateTime.parse('2022-08-19 11:00:10.458'),
+      status: 'preparing_purchase',
+      copyAndPaste: 'asd6a54dauhew923',
+      total: 11.0,
+      items: [
+        CartItemModel(item: apple, quantity: 2, id: ''),
+      ]),
   OrderModel(
-    id: 'V92dojs3q', 
-    cratedDateTime: DateTime.parse('2022-08-10 10:00:10.458'), 
-    overdueDateTime: DateTime.parse('2022-08-19 11:00:10.458'), 
-    status: 'pending_payment', 
-    copyAndPaste: 'asd6a54dauhew923', 
-    total: 11.0,
-    items: [ 
-      CartItemModel(
-        item: apple,
-        quantity: 2
-      ),
-    ] 
-  )
+      id: 'V92dojs3q',
+      cratedDateTime: DateTime.parse('2022-08-10 10:00:10.458'),
+      overdueDateTime: DateTime.parse('2022-08-19 11:00:10.458'),
+      status: 'pending_payment',
+      copyAndPaste: 'asd6a54dauhew923',
+      total: 11.0,
+      items: [
+        CartItemModel(item: apple, quantity: 2, id: ''),
+      ])
 ];
