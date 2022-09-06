@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
 import 'package:greengrocer_course/src/models/item_model.dart';
+import 'package:greengrocer_course/src/pages/base/controller/navigation_controller.dart';
 import 'package:greengrocer_course/src/pages/common_widgets/quantity_widget.dart';
 import 'package:greengrocer_course/src/services/utils_services.dart';
 
 class ProductScreen extends StatefulWidget {
-  ProductScreen({ Key? key, required this.item }) : super(key: key);
+  const ProductScreen({ Key? key, required this.item }) : super(key: key);
 
   final ItemModel item;
 
@@ -15,6 +17,7 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   final UtilServices utilServices = UtilServices();
+  final navigationController = Get.find<NavigationController>();
 
   int cartItemQuantity = 1;
 
@@ -29,7 +32,7 @@ class _ProductScreenState extends State<ProductScreen> {
               Expanded(
                 child: Hero(
                   tag: widget.item.imgUrl,
-                  child: Image.asset(widget.item.imgUrl)
+                  child: Image.network(widget.item.imgUrl)
                 )
               ),
               Expanded(
@@ -87,7 +90,11 @@ class _ProductScreenState extends State<ProductScreen> {
                               borderRadius: BorderRadius.circular(15)
                             )
                           ),
-                          onPressed: () {}, 
+                          onPressed: () {
+                            Get.back();
+                            navigationController.navigatePageView(NavigationTabs.cart);
+                            
+                          }, 
                           icon: const Icon(Icons.shopping_cart_outlined, color: Colors.white),
                           label: const Text('Adicionar', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
                         ),

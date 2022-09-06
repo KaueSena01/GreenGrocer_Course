@@ -42,6 +42,8 @@ class HomeRepository{
         .map(ItemModel.fromJson)
         .toList();
 
+        print(data);
+
         return HomeResult<ItemModel>.success(data);
     } else {
       return HomeResult.error('Ocorreu um erro inesperado');
