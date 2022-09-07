@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
 import 'package:greengrocer_course/src/pages/base/controller/navigation_controller.dart';
 import 'package:greengrocer_course/src/pages/cart/view/cart_tab.dart';
-import 'package:greengrocer_course/src/pages/orders/orders_tab.dart';
+import 'package:greengrocer_course/src/pages/orders/view/orders_tab.dart';
 import 'package:greengrocer_course/src/pages/profile/profile_tab.dart';
 
 import '../home/view/home_tab.dart';

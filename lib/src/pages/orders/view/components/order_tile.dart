@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:greengrocer_course/src/models/order_model.dart';
 import 'package:greengrocer_course/src/pages/common_widgets/payment_dialog.dart';
-import 'package:greengrocer_course/src/pages/orders/components/order_status_widget.dart';
+import 'package:greengrocer_course/src/pages/orders/controller/order_controller.dart';
+import 'package:greengrocer_course/src/pages/orders/view/components/order_status_widget.dart'; 
 import 'package:greengrocer_course/src/services/utils_services.dart';
 
 class OrderTile extends StatelessWidget {
@@ -23,22 +25,33 @@ class OrderTile extends StatelessWidget {
       ),
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-        child: ExpansionTile(
-          expandedCrossAxisAlignment: CrossAxisAlignment.start,
-          initiallyExpanded: order.status == 'pending_payment',
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('Pedido: ${order.id}'),
-              Text(utilServices.formatDateTime(order.cratedDateTime!), style: TextStyle(fontSize: 12, color: Colors.black))
-            ],
-          ),
-          childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-          children: [
-            _OrderItemWidget(order: order, utilServices: utilServices)
-          ],
-        ),
+        child: GetBuilder<OrderController>(
+          init: OrderController(order),
+          global: false,
+          builder: (controller) {
+            return ExpansionTile(
+              onExpansionChanged: (value) {
+                if(value && order.items.isEmpty) {
+                  controller.getOrderItems();
+                }
+              },
+              expandedCrossAxisAlignment: CrossAxisAlignment.start,
+              // initiallyExpanded: order.status == 'pending_payment',
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Pedido: ${order.id}'),
+                  Text(utilServices.formatDateTime(order.cratedDateTime!), style: TextStyle(fontSize: 12, color: Colors.black))
+                ],
+              ),
+              childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              children: [
+                _OrderItemWidget(order: order, utilServices: utilServices)
+              ],
+            );
+          },
+        )
       ),
     );
   }
@@ -108,7 +121,9 @@ class _OrderItemWidget extends StatelessWidget {
             ),
           ),
           Visibility(
-            visible: order.status == 'pending_payment',
+            visible: 
+              order.status == 'pending_payment' 
+              && !order.isOverDue,
             // replacement: , Outro Widget para apresentar
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(

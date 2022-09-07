@@ -8,9 +8,9 @@ part of 'order_model.dart';
 
 OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       id: json['id'] as String,
-      cratedDateTime: json['cratedDateTime'] == null
+      cratedDateTime: json['createdAt'] == null
           ? null
-          : DateTime.parse(json['cratedDateTime'] as String),
+          : DateTime.parse(json['createdAt'] as String),
       overdueDateTime: DateTime.parse(json['due'] as String),
       items: (json['items'] as List<dynamic>?)
               ?.map((e) => e == null
@@ -27,7 +27,7 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
 Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'cratedDateTime': instance.cratedDateTime?.toIso8601String(),
+      'createdAt': instance.cratedDateTime?.toIso8601String(),
       'due': instance.overdueDateTime.toIso8601String(),
       'items': instance.items,
       'status': instance.status,
