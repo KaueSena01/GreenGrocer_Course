@@ -36,29 +36,29 @@ class CartRepository {
     }
   }
 
-  // Future<CartResult<OrderModel>> checkoutCart({
-  //   required String token,
-  //   required double total,
-  // }) async {
-  //   final result = await _httpManager.restRequest(
-  //     // url: EndPoints.checkOut,
-  //     method: HttpMethods.post,
-  //     body: {
-  //       'total': total,
-  //     },
-  //     headers: {
-  //       'X-Parse-Session-Token': token,
-  //     },
-  //   );
+  Future<CartResult<OrderModel>> checkoutCart({
+    required String token,
+    required double total,
+  }) async {
+    final result = await _httpManager.restRequest(
+      url: EndPoints.checkOut,
+      method: HttpMethods.post,
+      body: {
+        'total': total,
+      },
+      headers: {
+        'X-Parse-Session-Token': token,
+      },
+    );
 
-  //   if (result['result'] != null) {
-  //     final order = OrderModel.fromJson(result['result']);
+    if (result['result'] != null) {
+      final order = OrderModel.fromJson(result['result']);
 
-  //     return CartResult<OrderModel>.success(order);
-  //   } else {
-  //     return CartResult.error('Não possível realizar o pedido');
-  //   }
-  // }
+      return CartResult<OrderModel>.success(order);
+    } else {
+      return CartResult.error('Não foi possível realizar o pedido');
+    }
+  }
 
   Future<bool> changeItemQuantity({
     required String token,

@@ -5,6 +5,7 @@ import 'package:greengrocer_course/src/models/item_model.dart';
 import 'package:greengrocer_course/src/models/order_model.dart';
 import 'package:greengrocer_course/src/pages/auth/controller/auth_controller.dart';
 import 'package:greengrocer_course/src/pages/cart/repository/cart_repository.dart';
+import 'package:greengrocer_course/src/pages/common_widgets/payment_dialog.dart';
 import 'package:greengrocer_course/src/services/utils_services.dart';
 
 import '../cart_result/cart_result.dart';
@@ -40,37 +41,37 @@ class CartController extends GetxController {
     update();
   }
 
-  // Future checkoutCart() async {
-  //   setCheckoutLoading(true);
+  Future checkoutCart() async {
+    setCheckoutLoading(true);
 
-  //   CartResult<OrderModel> result = await cartRepository.checkoutCart(
-  //     token: authController.user.token!,
-  //     total: cartTotalPrice(),
-  //   );
+    CartResult<OrderModel> result = await cartRepository.checkoutCart(
+      token: authController.user.token!,
+      total: cartTotalPrice(),
+    );
 
-  //   setCheckoutLoading(false);
+    setCheckoutLoading(false);
 
-  //   result.when(
-  //     success: (order) {
-  //       cartItems.clear();
-  //       update();
+    result.when(
+      success: (order) {
+        cartItems.clear();
+        update();
 
-  //       showDialog(
-  //         context: Get.context!,
-  //         builder: (_) {
-  //           return PaymentDialog(
-  //             order: order,
-  //           );
-  //         },
-  //       );
-  //     },
-  //     error: (message) {
-  //       utilsServices.showToast(
-  //         message: message,
-  //       );
-  //     },
-  //   );
-  // }
+        showDialog(
+          context: Get.context!,
+          builder: (_) {
+            return PaymentDialog(
+              order: order,
+            );
+          },
+        );
+      },
+      error: (message) {
+        utilsServices.showToast(
+          message: message,
+        );
+      },
+    );
+  }
 
   Future<bool> changeItemQuantity({
     required CartItemModel item,

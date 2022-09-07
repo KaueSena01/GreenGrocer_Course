@@ -82,24 +82,24 @@ UserModel user = UserModel(
     password: '22222222');
 
 List<OrderModel> orders = [
-  OrderModel(
-      id: 'V92dojs3q',
-      cratedDateTime: DateTime.parse('2022-08-10 10:00:10.458'),
-      overdueDateTime: DateTime.parse('2022-08-19 11:00:10.458'),
-      status: 'preparing_purchase',
-      copyAndPaste: 'asd6a54dauhew923',
-      total: 11.0,
-      items: [
-        CartItemModel(item: apple, quantity: 2, id: ''),
-      ]),
-  OrderModel(
-      id: 'V92dojs3q',
-      cratedDateTime: DateTime.parse('2022-08-10 10:00:10.458'),
-      overdueDateTime: DateTime.parse('2022-08-19 11:00:10.458'),
-      status: 'pending_payment',
-      copyAndPaste: 'asd6a54dauhew923',
-      total: 11.0,
-      items: [
-        CartItemModel(item: apple, quantity: 2, id: ''),
-      ])
+  // OrderModel(
+  //     id: 'V92dojs3q',
+  //     cratedDateTime: DateTime.parse('2022-08-10 10:00:10.458'),
+  //     overdueDateTime: DateTime.parse('2022-08-19 11:00:10.458'),
+  //     status: 'preparing_purchase',
+  //     copyAndPaste: 'asd6a54dauhew923',
+  //     total: 11.0,
+  //     items: [
+  //       CartItemModel(item: apple, quantity: 2, id: ''),
+  //     ]),
+  // OrderModel(
+  //     id: 'V92dojs3q',
+  //     cratedDateTime: DateTime.parse('2022-08-10 10:00:10.458'),
+  //     overdueDateTime: DateTime.parse('2022-08-19 11:00:10.458'),
+  //     status: 'pending_payment',
+  //     copyAndPaste: 'asd6a54dauhew923',
+  //     total: 11.0,
+  //     items: [
+  //       CartItemModel(item: apple, quantity: 2, id: ''),
+  //     ])
 ];

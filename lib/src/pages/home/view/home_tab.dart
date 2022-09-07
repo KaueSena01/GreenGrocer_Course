@@ -4,6 +4,8 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart'; 
 import 'package:greengrocer_course/src/config/custom_colors.dart';
+import 'package:greengrocer_course/src/pages/base/controller/navigation_controller.dart';
+import 'package:greengrocer_course/src/pages/cart/controller/cart_controller.dart';
 import 'package:greengrocer_course/src/pages/common_widgets/app_name_widget.dart';
 import 'package:greengrocer_course/src/pages/common_widgets/custom_shimmer.dart'; 
 import 'package:greengrocer_course/src/pages/home/controller/home_controller.dart';
@@ -27,6 +29,7 @@ class _HomeTabState extends State<HomeTab> {
   GlobalKey<CartIconKey> globalKeyCartItems = GlobalKey<CartIconKey>();
 
   final searchController = TextEditingController();
+  final navigationController = Get.find<NavigationController>();
 
   late Function(GlobalKey) runAddToCartAnimation;
 
@@ -45,16 +48,22 @@ class _HomeTabState extends State<HomeTab> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 15.0, right: 15.0),
-            child: GestureDetector(
-              onTap: () {},
-              child: Badge(
-                badgeColor: CustomColors.customContrastColor,
-                badgeContent: const Text("2", style: TextStyle(color: Colors.white, fontSize: 14)),
-                child: AddToCartIcon(
-                  key: globalKeyCartItems,
-                  icon: Icon(Icons.shopping_cart, color: CustomColors.customPrimaryColor)
-                )
-              ),
+            child: GetBuilder<CartController>( 
+              builder: (controller) {
+                return GestureDetector(
+                          onTap: () {
+                            navigationController.navigatePageView(NavigationTabs.cart);
+                          },
+                          child: Badge(
+                            badgeColor: CustomColors.customContrastColor,
+                            badgeContent: Text('${controller.cartItems.length}', style: TextStyle(color: Colors.white, fontSize: 14)),
+                            child: AddToCartIcon(
+                              key: globalKeyCartItems,
+                              icon: Icon(Icons.shopping_cart, color: CustomColors.customPrimaryColor)
+                            )
+                          ),
+                        ); 
+              },
             ),
           )
         ],

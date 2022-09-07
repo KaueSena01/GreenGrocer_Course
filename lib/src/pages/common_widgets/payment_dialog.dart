@@ -1,3 +1,4 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:greengrocer_course/src/config/custom_colors.dart';
 import 'package:greengrocer_course/src/models/order_model.dart';
@@ -33,10 +34,10 @@ class PaymentDialog extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text('Pagamento com Pix', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 ),
-                QrImage(
-                  data: "1234567890",
-                  version: QrVersions.auto,
-                  size: 200.0,
+                Image.memory(
+                  utilServices.decodeQrCodeImage(order.qrCodeImage),
+                  height: 200,
+                  width: 200,
                 ),
                 Text('Vencimento: ${utilServices.formatDateTime(order.overdueDateTime)}', 
                   style: const TextStyle(fontSize: 12),  
@@ -54,7 +55,12 @@ class PaymentDialog extends StatelessWidget {
                       color: CustomColors.customPrimaryColor
                     )
                   ),
-                  onPressed: () {}, 
+                  onPressed: () {
+                    FlutterClipboard.copy(
+                      order.copyAndPaste
+                    );
+                    utilServices.showToast(message: 'Código copiado!');
+                  }, 
                   icon: const Icon(Icons.copy, size: 15), 
                   label: const Text('Copiar código Pix', style: TextStyle(fontSize: 13))
                 )
