@@ -24,18 +24,18 @@ class AllOrdersController extends GetxController {
       token: authController.user.token!,
     );
 
-    // result.when(
-    //   success: (orders) {
-    //     allOrders = orders
-    //       ..sort((a, b) => b.createdDateTime!.compareTo(a.createdDateTime!));
-    //     update();
-    //   },
-    //   error: (message) {
-    //     utilsServices.showToast(
-    //       message: message,
-    //       isError: true,
-    //     );
-    //   },
-    // );
+    result.when(
+      success: (orders) {
+        allOrders = orders
+          ..sort((a, b) => b.cratedDateTime!.compareTo(a.cratedDateTime!));
+        update();
+      },
+      error: (message) {
+        utilsServices.showToast(
+          message: message,
+          isError: true,
+        );
+      },
+    );
   }
 }

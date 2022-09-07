@@ -44,56 +44,53 @@ class AuthController extends GetxController {
     );
   }
 
-  // Future<void> changePassword({
-  //   required String currentPassword,
-  //   required String newPassword,
-  // }) async {
-  //   isLoading.value = true;
+  Future<void> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    isLoading.value = true;
 
-  //   final result = await authRepository.changePassword(
-  //     email: user.email!,
-  //     currentPassword: currentPassword,
-  //     newPassword: newPassword,
-  //     token: user.token!,
-  //   );
+    final result = await authRepository.changePassword(
+      email: user.email!,
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+      token: user.token!,
+    );
 
-  //   isLoading.value = false;
+    isLoading.value = false;
 
-  //   if (result) {
-  //     utilsServices.showToast(
-  //       message: 'A senha foi atualizada com sucesso!',
-  //     );
+    if (result) {
+      utilsServices.showToast(
+        message: 'A senha foi atualizada com sucesso!',
+      );
 
-  //     signOut();
-  //   } else {
-  //     utilsServices.showToast(
-  //       message: 'A senha atual está incorreta',
-  //       isError: true,
-  //     );
-  //   }
-  // }
+      signOut();
+    } else {
+      utilsServices.showToast(
+        message: 'A senha atual está incorreta',
+        isError: true,
+      );
+    }
+  }
 
   Future<void> resetPassword(String email) async {
     await authRepository.resetPassword(email);
   }
 
   Future<void> signOut() async {
-    // Zerar o user
+     
     user = UserModel();
-
-    // Remover o token localmente
+ 
     await utilsServices.removeLocalData(key: StorageKeys.token);
-
-    // Ir para o login
+ 
     Get.offAllNamed(PagesRoutes.signInRoute);
   }
 
   void saveTokenAndProceedToBase() {
-    // Salvar o token
+ 
     utilsServices.saveLocalData(key: StorageKeys.token, data: user.token!);
     print(user.token);
-
-    // Ir para a base
+ 
     Get.offAllNamed(PagesRoutes.baseRoute);
   }
 

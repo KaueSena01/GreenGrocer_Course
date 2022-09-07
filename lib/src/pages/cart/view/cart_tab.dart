@@ -24,7 +24,7 @@ class _CartTabState extends State<CartTab> {
   double cartTotalPrice() {
     double total = 0;
 
-    for (var item in app_data.cartItem) {
+    for (var item in cartController.cartItems) {
       total += item.totalPrice();
     }
 
@@ -100,7 +100,9 @@ class _CartTabState extends State<CartTab> {
                               primary: CustomColors.customPrimaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18))),
-                          onPressed: cartController.isCheckoutLoading
+                          onPressed: (cartController.isCheckoutLoading || 
+                                      cartController.cartItems.isEmpty
+                          )
                             ? null
                             :  () async {
                             bool? result = await showOrderConfirmation();

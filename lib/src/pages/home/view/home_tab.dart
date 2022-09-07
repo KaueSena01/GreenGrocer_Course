@@ -144,7 +144,7 @@ class _HomeTabState extends State<HomeTab> {
                   ListView(
                     scrollDirection: Axis.horizontal,
                     children: List.generate(
-                      app_data.categories.length, (index) => 
+                      controller.allCategories.length, (index) => 
                       Container(
                         margin: const EdgeInsets.only(right: 12),
                         alignment: Alignment.center,
@@ -206,7 +206,7 @@ class _HomeTabState extends State<HomeTab> {
                       crossAxisSpacing: 10,
                       childAspectRatio: 9 / 11.5,
                       children: List.generate(
-                        app_data.items.length, (index) => 
+                        controller.allProducts.length, (index) => 
                         CustomShimmer(
                           height: double.infinity, 
                           width: double.infinity,
