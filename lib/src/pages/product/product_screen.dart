@@ -94,7 +94,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           ),
                           onPressed: () {
                             Get.back();
-                            cartController.addItemCart(
+                            cartController.addItemToCart(
                               item: widget.item,
                               quantity: cartItemQuantity
                             );
