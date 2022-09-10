@@ -1,7 +1,7 @@
 <div align="center" display="flex">
-<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/flutter%20-%20logo.png"/>
-<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/getx%20-%20logo.png"/>
-<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/back4app%20-%20logo.png"/>
+<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/flutter%20-%20logo.png" heigth="300px" width="300px"/>
+<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/getx%20-%20logo.png" heigth="300px" width="300px"/>
+<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/back4app%20-%20logo.png" heigth="300px" width="300px"/>
 </div>
 
 ## Greengrocer 🥑 
