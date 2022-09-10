@@ -1,14 +1,9 @@
-<div align="center" display="flex">
-<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/flutter%20-%20logo.png" heigth="200px" width="200px"/>
-<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/getx%20-%20logo.png" heigth="200px" width="200px"/>
-<img src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/back4app%20-%20logo.png" heigth="200px" width="200px"/>
-</div>
-
 ## Greengrocer 🥑 
 
-Greengrocer is an online store that includes payments by Pix, using the full potential of GetX! The APP uses the main pillars of GetX, such as routes, dependency injection, state management using special Widgets, as well as many other useful methods of the GetX package. In addition, the APP uses a real API to perform REST requests.
+Greengrocer is an online store that includes payments by Pix, using the full potential of GetX! The APP uses the main pillars of GetX, such as routes, dependency injection, state management using special Widgets, as well as many other useful methods of the GetX package. In addition, the APP uses a real API to perform REST requests. 
+[Certification](https://www.udemy.com/certificate/UC-40335273-2c1e-450b-a32a-b6bda807a610/)
 
-## About application
+## About application 📄
 
 Great APP using state management and dependency injection.
 
@@ -30,7 +25,9 @@ $ flutter pub get
 # Run
 $ flutter run
 ```
-Application screenshots
+### Application screenshots 📷
+
+
 <div style="text-align: center"><table><tr>
    <td style="text-align: center">
     <img width="300" alt="" src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/Screenshot_20220910-082551.jpg">
@@ -40,6 +37,4 @@ Application screenshots
   </td>
 </tr>
 </table></div>
-
-This application was built based on the [Cod3r](https://www.youtube.com/watch?v=LeRjIY4n2Vk) project.
-
+<img alt="" src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/Captura%20de%20Tela%20(1).png">
