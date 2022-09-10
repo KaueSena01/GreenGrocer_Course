@@ -1,16 +1,41 @@
-# greengrocer_course
+# Greengrocer /🥑
 
-A new Flutter project.
+## Greengrocer 🥑 
 
-## Getting Started
+Greengrocer is an online store that includes payments by Pix, using the full potential of GetX! The APP uses the main pillars of GetX, such as routes, dependency injection, state management using special Widgets, as well as many other useful methods of the GetX package. In addition, the APP uses a real API to perform REST requests.
 
-This project is a starting point for a Flutter application.
+## About application
 
-A few resources to get you started if this is your first Flutter project:
+Great APP using state management and dependency injection.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Main packages: 
+* get
+* dio
+* json_serializable
+* freezed
+* build_runner
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To run the project use the following commands
+```bash
+# Clone this project
+$ git clone https://github.com/KaueSena01/GreenGrocer_Course
+
+# Execute
+$ flutter pub get
+
+# Run
+$ flutter run
+```
+Application screenshots
+<div style="text-align: center"><table><tr>
+   <td style="text-align: center">
+    <img width="300" alt="" src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/Screenshot_20220910-082551.jpg">
+  </td>
+  <td style="text-align: center">
+    <img width="300" alt="" src="https://github.com/KaueSena01/GreenGrocer_Course/blob/master/banners/Screenshot_20220910-084424.jpg">
+  </td>
+</tr>
+</table></div>
+
+This application was built based on the [Cod3r](https://www.youtube.com/watch?v=LeRjIY4n2Vk) project.
+
